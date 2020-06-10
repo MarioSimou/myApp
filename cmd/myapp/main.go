@@ -13,23 +13,6 @@ func pong(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "pong\n")
 }
 
-func newRoute(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintf(w, "adding new route\n")
-}
-
-func home(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintf(w, "welcome home\n")
-}
-
-func username(w http.ResponseWriter, r *http.Request){
-	var username = r.URL.Query().Get("name")
-	if username == "" {
-		fmt.Fprintf(w, "I don't know your name")
-	} else {
-		fmt.Fprintf(w, "Hello %s\n", username)		
-	}
-}
-
 func main(){
 	var port = os.Getenv("PORT")
 	if port == "" {

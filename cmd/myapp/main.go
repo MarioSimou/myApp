@@ -22,9 +22,6 @@ func main(){
 	var address = fmt.Sprintf(":%s", port)
 
 	http.HandleFunc("/ping", pong)
-	http.HandleFunc("/", home)
-	http.HandleFunc("/username", username)
-	http.HandleFunc("/new", newRoute)
 
 	log.Printf("The app listens on %s - process id: %s\n", address, uuid.New().String())
 	log.Fatalln(http.ListenAndServe(address, nil))

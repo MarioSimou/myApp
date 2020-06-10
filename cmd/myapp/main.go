@@ -13,6 +13,10 @@ func pong(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "pong\n")
 }
 
+func newRoute(w http.ResponseWriter, r *http.Request){
+	fmt.Fprintf(w, "adding new route\n")
+}
+
 func home(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "welcome home\n")
 }
@@ -37,6 +41,7 @@ func main(){
 	http.HandleFunc("/ping", pong)
 	http.HandleFunc("/", home)
 	http.HandleFunc("/username", username)
+	http.HandleFunc("/new", newRoute)
 
 	log.Printf("The app listens on %s - process id: %s\n", address, uuid.New().String())
 	log.Fatalln(http.ListenAndServe(address, nil))

@@ -2,6 +2,7 @@
   "environments": {
     "test": {
       "scripts": {
+        "test-setup": "go get -u ./...",
         "test": "go test ./..."
       }
     }

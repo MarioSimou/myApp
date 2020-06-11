@@ -3,5 +3,57 @@ build:
     myapp: dockerfile
   config:
     APP: myapp
+    SSH_PRV_KEY: "-----BEGIN RSA PRIVATE KEY-----
+      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
+      -----END RSA PRIVATE KEY-----"
+      
 run:
   myapp: ./bin/myapp

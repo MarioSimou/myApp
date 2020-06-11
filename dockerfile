@@ -1,7 +1,11 @@
 FROM golang:1.14-buster
-WORKDIR /go/src/app
+
+ARG APP=${APP}
+
+WORKDIR /go/src/${APP}
+RUN pwd
 COPY . .
 RUN go get -u ./... \
     && go build -o ./bin/myapp ./cmd/myapp/main.go
-EXPOSE 3000
+# EXPOSE 3000
 CMD ./bin/myapp

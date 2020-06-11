@@ -8,13 +8,11 @@ COPY . .
 RUN mkdir -p ~/.ssh \
     && echo "${SSH_PRV_KEY}" > ~/.ssh/id_rsa \
     && chmod 700 ~/.ssh/ \
-    && cat ~/.ssh/id_rsa \
     && chmod -R 600 ~/.ssh/* \
+    && eval "$(ssh-agent -s)" \
     && git config --global --add url."git@github.com:".insteadOf "https://github.com/" \
-    # && ssh-add ~/.ssh/id_rsa \
+    && ssh-add ~/.ssh/id_rsa \
     && ssh-keyscan github.com >> ~/.ssh/known_hosts \
-    && cat ~/.ssh/known_hosts \ 
-    && ssh -vT git@github.com \
     && go get -u ./... \
     && go build -o ./bin/myapp ./cmd/myapp/main.go
 

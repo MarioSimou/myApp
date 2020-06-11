@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/MarioSimou/cds-library-go/mocks"
 	"github.com/google/uuid"
 )
 
@@ -29,8 +30,9 @@ func main(){
 	if port == "" {
 		port = "3000"
 	}
-
+	var msgInterface = mocks.MessageInterface{}
 	var address = fmt.Sprintf(":%s", port)
+	fmt.Println(msgInterface)
 
 	http.HandleFunc("/ping", pong)
 	http.HandleFunc("/", welcome)

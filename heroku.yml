@@ -3,8 +3,5 @@ build:
     web: dockerfile
   config:
     APP: myapp
-setup:
-  config:
-    APP: myapp
 run:
   web: ./bin/myapp

@@ -1,9 +1,7 @@
-name: Go
+name: CI Merge To Master
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:

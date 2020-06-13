@@ -38,7 +38,7 @@ jobs:
         fi
 
     - name: Build
-      run: go build -o ./bin/${{secrets.APP_NAME}} ./cmd/myapp/${{secrets.APP_NAME}}.go
+      run: go build -o ./bin/myapp ./cmd/myapp/main.go
 
     - name: Test
       run: go test -v ./...

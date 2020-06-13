@@ -60,4 +60,4 @@ jobs:
       run: sudo snap install --classic heroku \
            && heroku container:login \
            && heroku container:release -a myapptest1go web \
-           && heroku ps:scale web=1
+           && heroku ps:scale web=1 -a myapptest1go

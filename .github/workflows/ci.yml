@@ -48,6 +48,7 @@ jobs:
     - name: Publish image
       uses: docker/build-push-action@v1
       with:
+        username: _
         password: ${{ secrets.REGISTRY_PASSWORD }}
         registry: registry.heroku.com
         repository: myapptest1go/web

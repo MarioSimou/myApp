@@ -1,9 +1,7 @@
-name: Go
+name: CI Merge To Master
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
@@ -48,8 +46,10 @@ jobs:
     - name: Publish image
       uses: docker/build-push-action@v1
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: msimou/cds
+        username: _
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+        registry: registry.heroku.com
+        repository: myapptest1go/web
         tags: latest
+        build_args: APP=myapp,SSH_PRV_KEY=${{ secrets.SSH_PRV_KEY }}
         path: .

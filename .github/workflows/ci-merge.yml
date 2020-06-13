@@ -57,5 +57,5 @@ jobs:
       run: sudo snap install --classic heroku
            && heroku container:login
            && heroku stack:set container -a ${{secrets.HEROKU_APP_NAME}}
-           && heroku container:release -a ${{secrets.HEROKU_APP_NAME}} myapp
-           && heroku ps:scale myapp=1 -a ${{secrets.HEROKU_APP_NAME}}
+           && heroku container:release -a ${{secrets.HEROKU_APP_NAME}} web
+           && heroku ps:scale web=1 -a ${{secrets.HEROKU_APP_NAME}}

@@ -53,3 +53,11 @@ jobs:
         tags: latest
         build_args: APP=myapp,SSH_PRV_KEY=${{ secrets.SSH_PRV_KEY }}
         path: .
+
+    - name: Releasing the app
+      env:
+        - HEROKU_API_KEY: ${{secrets.REGISTRY_PASSWORD}}
+      run: sudo snap install --classic heroku \
+           && heroku container:login \
+           && heroku container:release -a myapptest1go web \
+           && heroku ps:scale web=1

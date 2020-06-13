@@ -24,10 +24,13 @@ jobs:
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
       with:
-        key: ${{ secrets.SSH_KEY }}
+        key: ${{ secrets.SSH_PRV_KEY }}
         name: id_rsa
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
-
+    
+    - name: Allowing SSH fetches
+      run: git config --global --add url."git@github.com:".insteadOf "https://github.com/"
+    
     - name: Get dependencies
       run: |
         go get -v -t -d ./...

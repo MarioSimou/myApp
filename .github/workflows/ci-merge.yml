@@ -56,8 +56,8 @@ jobs:
 
     - name: Releasing the app
       env:
-        - HEROKU_API_KEY: ${{secrets.REGISTRY_PASSWORD}}
-      run: sudo snap install --classic heroku \
-           && heroku container:login \
-           && heroku container:release -a myapptest1go web \
+        HEROKU_API_KEY: ${{secrets.REGISTRY_PASSWORD}}
+      run: sudo snap install --classic heroku
+           && heroku container:login
+           && heroku container:release -a myapptest1go web
            && heroku ps:scale web=1

@@ -1,7 +1,0 @@
-build:
-  docker:
-    myapp: dockerfile
-  config:
-    APP: myapp      
-run:
-  myapp: ./bin/myapp

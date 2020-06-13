@@ -14,7 +14,7 @@ func pong(w http.ResponseWriter, r *http.Request){
 	fmt.Fprintf(w, "pong\n")
 }
 func welcome(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintf(w, "welcome\n")
+	fmt.Fprintf(w, "welcome 37\n")
 }
 
 func main(){

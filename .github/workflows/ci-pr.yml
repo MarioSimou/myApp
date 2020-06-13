@@ -1,4 +1,4 @@
-name: CI Pull Request
+name: CI Merge To Master
 
 on:
   pull_request:
@@ -36,9 +36,6 @@ jobs:
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
             dep ensure
         fi
-
-    - name: Build
-      run: go build -o ./bin/myapp ./cmd/myapp/main.go
 
     - name: Test
       run: go test -v ./...

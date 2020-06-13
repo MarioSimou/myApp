@@ -37,9 +37,6 @@ jobs:
             dep ensure
         fi
 
-    - name: Build
-      run: go build -o ./bin/myapp ./cmd/myapp/main.go
-
     - name: Test
       run: go test -v ./...
 
@@ -49,7 +46,7 @@ jobs:
         username: _
         password: ${{ secrets.REGISTRY_PASSWORD }}
         registry: registry.heroku.com
-        repository: ${{secrets.HEROKU_APP_NAME}}/${{secrets.APP_NAME}}
+        repository: myapptest1go/web
         tags: latest
         build_args: APP=myapp,SSH_PRV_KEY=${{ secrets.SSH_PRV_KEY }}
         path: .
@@ -59,5 +56,6 @@ jobs:
         HEROKU_API_KEY: ${{secrets.REGISTRY_PASSWORD}}
       run: sudo snap install --classic heroku
            && heroku container:login
-           && heroku container:release -a ${{secrets.HEROKU_APP_NAME}} ${{secrets.APP_NAME}}
-           && heroku ps:scale web=1 -a ${{secrets.HEROKU_APP_NAME}}
+           && heroku stack:set container -a myapptest1go
+           && heroku container:release -a myapptest1go web
+           && heroku ps:scale web=1 -a myapptest1go
